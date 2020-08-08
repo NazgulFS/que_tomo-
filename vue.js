@@ -7,64 +7,32 @@ const app = new Vue({
     },
     vuetify: new Vuetify(this.opts),
     data: () => ({
-      dialog: false,
-      drawer: null,
-      titulo: 'Truco Helper',
-      contEllos: 0,
-      contNos: 0,
-      goDark: true,
-      trainingMode: true,
-      cartas: ["4", "5", "6", "7", "10", "11", "12"]
+        itemsPerPageArray: [4, 8, 12],
+        search: '',
+        filter: {},
+        sortDesc: false,
+        page: 1,
+        itemsPerPage: 4,
+        sortBy: 'name',
     }),
     methods: {
-      aumentarNos(){
-        if(this.contNos >= 0 && this.contNos < 30){
-          this.contNos++
-        }else if(this.contNos < 0){
-          this.contNos = 0;
-        }else if(this.contNos >= 30){
-          this.contNos = 30;
-        }
+      nextPage () {
+        if (this.page + 1 <= this.numberOfPages) this.page += 1
       },
-      aumentarEllos(){
-        if(this.contEllos >= 0 && this.contEllos < 30){
-          this.contEllos++
-        }else if(this.contEllos < 0){
-          this.contEllos = 0;
-        }else if(this.contEllos >= 30){
-          this.contEllos = 30;
-        }
+      formerPage () {
+        if (this.page - 1 >= 1) this.page -= 1
       },
-      disminuirNos(){
-        if(this.contNos > 0){
-          this.contNos--
-        }
+      updateItemsPerPage (number) {
+        this.itemsPerPage = number
       },
-      disminuirEllos(){
-        if(this.contEllos > 0){
-          this.contEllos--
-        }
-
-      },
-      reiniciar(){
-        this.contEllos = 0;
-        this.contNos = 0;
-      },
-
+    },
     },
     computed: {
-      setTheme() {
-          if (this.goDark == true) {
-              return (this.$vuetify.theme.dark = true);
-          } else {
-              return (this.$vuetify.theme.dark = false);
-          }
+      numberOfPages () {
+        return Math.ceil(this.items.length / this.itemsPerPage)
       },
-      trainingWheels() {
-        if (this.modoPrincipante == true) {
-          alert("Princ")
-            document.getElementsByClassName("training")
-        }
-      }
+      filteredKeys () {
+        return this.keys.filter(key => key !== `Name`)
+      },
   }
   })
