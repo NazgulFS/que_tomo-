@@ -155,5 +155,13 @@ const app = new Vue({
       filteredKeys () {
         return this.keys.filter(key => key !== `Name`)
       },
-    }
+      casc(){
+        console.log(this.info)
+      }
+    },
+    mounted () {
+      axios
+        .get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
+        .then(response => (this.info = response))
+    },
 })
