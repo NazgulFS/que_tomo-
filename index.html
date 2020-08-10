@@ -13,19 +13,29 @@
 <body>
   <div id="app">
     <v-app id="inspire" :dark="setTheme">
-      <!--Nav-->
-      <v-navigation-drawer v-model="drawer" app clipped >
-        <v-container fluid>
-          <v-switch :label="`Dark Mode`" v-model="goDark"></v-switch>
-        </v-container>
-    </v-navigation-drawer>
-
-
       <!--Title Nav-->
-        <v-app-bar app clipped-left>
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <div>
+          <v-app-bar
+            color="gray accent-4"
+            dark
+          >
             <v-toolbar-title>{{ titulo }}</v-toolbar-title>
-        </v-app-bar>
+      
+            <v-spacer></v-spacer>
+            <v-switch style="padding-top:25px!important" v-model="goDark"></v-switch>
+            <v-btn icon>
+
+              <v-icon>mdi-weather-night</v-icon>
+            </v-btn>
+              </template>
+            </v-menu>
+          </v-app-bar>
+        </div>
+        <!-- <v-app-bar app clipped-left>
+            <v-toolbar-title>{{ titulo }}</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-switch :label="'Dark Mode'" v-model="goDark"></v-switch>
+        </v-app-bar> -->
       
       <!--Body-->
       <v-main>
