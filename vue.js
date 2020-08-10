@@ -51,7 +51,7 @@ const app = new Vue({
     },
     mounted () {
       axios
-        .get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Margarita')
+        .get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
         .then(response => {
           this.items = response.data.drinks
           this.keys = Object.keys(response.data.drinks[0])
