@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Truco Helper</title>
+    <title>App - Que tomo?</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -111,8 +111,8 @@
                       v-for="(key, index) in filteredKeys"
                       :key="index"
                     >
-                      <v-list-item-content :class="{ 'blue--text': sortBy === key }">{{ key }}:</v-list-item-content>
-                      <v-list-item-content class="align-end" :class="{ 'blue--text': sortBy === key }">{{ item[key.toLowerCase()] }}</v-list-item-content>
+                      <v-list-item-content style="font-size: 14px" :class="{ 'blue--text': sortBy === key }">{{ key }}:</v-list-item-content>
+                      <v-list-item-content class="align-end" :class="{ 'blue--text': sortBy === key }">{{ item[key] }}</v-list-item-content>
                     </v-list-item>
                   </v-list>
                 </v-card>

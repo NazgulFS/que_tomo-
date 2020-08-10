@@ -43,7 +43,33 @@ const app = new Vue({
         return Math.ceil(this.items.length / this.itemsPerPage)
       },
       filteredKeys () {
-        return this.keys.filter(key => key !== `strDrink`)
+        unusedKeys = ["idDrink", "strDrink", "strDrinkAlternate", "strDrinkES", "strDrinkDE", "strDrinkFR", "strDrinkZH-HANS", "strDrinkZH-HANT", "strTags", "strVideo", "strIBA",
+         "strInstructionsES", "strInstructionsDE", "strInstructionsFR", "strInstructionsZH-HANS", "strInstructionsZH-HANT", "strDrink", "strDrink", "strDrink"]
+        readyKeys = this.keys.filter(item => !unusedKeys.includes(item))
+      //   readyKeys = this.keys.filter(key => key !== "strDrink")
+      //   readyKeys = this.keys
+      //   for( i = 0; i < readyKeys.length; i++){
+      //     if(readyKeys[i] == "idDrink"
+      //     || readyKeys[i] == "strDrink"
+      //     || readyKeys[i] == "strDrinkAlternate"
+      //     || readyKeys[i] == "strDrinkDE"
+      //     || readyKeys[i] == "strDrinkES"
+      //     || readyKeys[i] == "strDrinkFR"
+      //     || readyKeys[i] == "strDrinkZH-HANS"
+      //     || readyKeys[i] == "strDrinkZH-HANT"
+      //     || readyKeys[i] == "strTags"
+      //     || readyKeys[i] == "strVideo"
+      //     || readyKeys[i] == "strIBA"
+      //     || readyKeys[i] == "strInstructionsES"
+      //     || readyKeys[i] == "strInstructionsDE"
+      //     || readyKeys[i] == "strInstructionsFR"
+      //     || readyKeys[i] == "strInstructionsZH-HANS"
+      //     || readyKeys[i] == "strInstructionsZH-HANT"
+      //     ){
+      //       delete readyKeys[i]
+      //     }
+      //   }
+      return readyKeys
       }
     },
     mounted () {
@@ -52,6 +78,7 @@ const app = new Vue({
         .then(response => {
           this.items = response.data.drinks
           this.keys = Object.keys(response.data.drinks[0])
+          console.log(items)
         })
         .catch(error => {
           console.log(error)
