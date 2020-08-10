@@ -52,7 +52,7 @@
                 solo-inverted
                 hide-details
                 prepend-inner-icon="search"
-                label="Search"
+                label="Buscar"
               ></v-text-field>
               <template v-if="$vuetify.breakpoint.mdAndUp">
                 <v-spacer></v-spacer>
@@ -63,7 +63,7 @@
                   hide-details
                   :items="keys"
                   prepend-inner-icon="search"
-                  label="Sort by"
+                  label="Ordenar por"
                 ></v-select>
                 <v-spacer></v-spacer>
                 <v-btn-toggle
@@ -103,7 +103,9 @@
               >
                 <v-card>
                   <v-card-title class="subheading font-weight-bold">{{ item.strDrink }}</v-card-title>
-    
+                  <v-img
+                    :src= 'item.strDrinkThumb'
+                  ></v-img>
                   <v-divider></v-divider>
     
                   <v-list dense>
@@ -122,7 +124,7 @@
           </template>
     
           <template v-slot:footer>
-            <v-row class="mt-2 pl-1 pr-1" align="center" justify="center">
+            <v-row class="mt-2 pl-1 pr-1" justify="center">
               <span class="grey--text">Items per page</span>
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
